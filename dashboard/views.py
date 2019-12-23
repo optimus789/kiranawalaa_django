@@ -11,6 +11,5 @@ def dashboard(request):
     else:
         messages.warning(request, f'Not an admin')
         return redirect('/')
-        return render()
 
 
