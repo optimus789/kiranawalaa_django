@@ -1,7 +1,6 @@
-{% extends 'dashboad/blank.html' %}
-{% load crispyformtags %}
+{% extends "dashboard/blank.html" %}
 {% block content %}
-<h1>Hello this is the page for creating item</h1>
+<h1>Add the item !</h1>
 
 <div class="row">
 <div class="col-md-8">
@@ -14,16 +13,10 @@
         <form action="" method="POST">
             {% csrf_token %}
             <div class="row">
-            <div class="col-md-5 pr-1">
+            <div class="col-md-3 pr-1">
                 <div class="form-group">
-                <label>ID (disabled)</label>
-                <input type="text" class="form-control" disabled="" placeholder="Company" value="{{user.id}}" name="id">
-                </div>
-            </div>
-            <div class="col-md-3 px-1">
-                <div class="form-group">
-                <label>Username</label>
-                <input type="text" class="form-control" placeholder="Username" value="{{user.username}}" name="uname">
+                <label>Title</label>
+                <input type="text" class="form-control" placeholder="Name of the item" value="{{inv.title}}" name="uname">
                 </div>
             </div>
             <div class="col-md-4 pl-1">
