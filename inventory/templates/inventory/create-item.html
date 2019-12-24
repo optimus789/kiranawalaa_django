@@ -6,7 +6,7 @@
 <div class="content-section">
         <div class="container center-block">
             <div class="content-section">
-                <form method="POST">
+                <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% load widget_tweaks %}
                     {% for field in form.visible_fields %}

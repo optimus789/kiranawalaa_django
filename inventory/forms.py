@@ -1,4 +1,5 @@
 from django import forms
+from .models import Item
 
 TAX= [
     ('0.0', 'No tax'),
@@ -24,16 +25,23 @@ UNITS = [
 ]
 
 
-class CreateItemForm(forms.Form):
-    title = forms.CharField(max_length=100, required=True)
-    desc = forms.CharField(max_length=2000)
-    category = forms.CharField(
+class ItemCreateForm(forms.ModelForm):
+    """title = forms.CharField(max_length=100, required=True)
+    desc = forms.CharField(max_length=2000)"""
+    category = forms.ChoiceField(
         label='Select type: ',
-        widget=forms.RadioSelect(choices=CAT),
+        choices=CAT,
+        widget=forms.RadioSelect(),
         required=True)
-    cprice = forms.FloatField(label="Cost Price", required=True)
+    """cprice = forms.FloatField(label="Cost Price", required=True)
     sprice = forms.FloatField(label="Selling Price", required=True)
-    mrp = forms.FloatField(label="Maximum Retail Price(MRP): ", required=True)
+    mrp = forms.FloatField(label="Maximum Retail Price(MRP): ", required=True)"""
     tax = forms.FloatField(label='Tax', widget=forms.RadioSelect(choices=TAX), required=False)
-    stock = forms.IntegerField(label="Stock", required=True)
-    units = forms.ChoiceField(label="Unit", required=True ,choices=UNITS)
+    """stock = forms.IntegerField(label="Stock", required=True)"""
+    units = forms.ChoiceField(label="Unit", required=True, choices=UNITS)
+
+    class Meta:
+        model = Item
+        fields = ['title', 'desc', 'category', 'cprice', 'sprice', 'mrp', 'tax', 'stock', 'units']
+
+    
