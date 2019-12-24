@@ -36,6 +36,7 @@ class Item(models.Model):
     tax = models.FloatField(default=0.00)
     stock = models.PositiveIntegerField()
     units = models.CharField(max_length=10)
+    image = models.ImageField(default="default.jpg", upload_to='item_pics')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

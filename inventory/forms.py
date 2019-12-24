@@ -42,6 +42,6 @@ class ItemCreateForm(forms.ModelForm):
 
     class Meta:
         model = Item
-        fields = ['title', 'desc', 'category', 'cprice', 'sprice', 'mrp', 'tax', 'stock', 'units']
+        fields = ['title', 'desc', 'category', 'image', 'cprice', 'sprice', 'mrp', 'tax', 'stock', 'units']
 
     

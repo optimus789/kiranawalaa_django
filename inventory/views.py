@@ -6,7 +6,7 @@ from django.contrib import messages
 # Create your views here.
 
 def inventorylist(request):
-    context = {"item": Item.objects.all()}
+    context = {"items": Item.objects.all()}
     return render(request,'inventory/inventory.html', context)
 
 def create(request):
