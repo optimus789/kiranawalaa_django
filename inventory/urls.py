@@ -6,6 +6,6 @@ from . import views
 
 
 urlpatterns = [
-    path('', include('dashboard.urls')),
+    path('', views.inventorylist, name='inventory'),
     path('create/', views.create, name='create-item'),
 ]

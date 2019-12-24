@@ -10,7 +10,10 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Blank</title>
+  <title>Kiranawalaa Admin</title>
+
+  <!-- Custom styles for this page -->
+  <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
   <!-- Custom fonts for this template-->
   <link href="{% static 'dashboard/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
@@ -34,7 +37,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3"> Kiranawalaa Admin</div>
       </a>
 
       <!-- Divider -->
@@ -59,13 +62,14 @@
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
+          <span>Inventory</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="#">Buttons</a>
-            <a class="collapse-item" href="#">Cards</a>
+            <h6 class="collapse-header">Inventory Options:</h6>
+            <a class="collapse-item" href="#">Add</a>
+            <a class="collapse-item" href="#">Update</a>
+            <a class="collapse-item" href="#">Delete</a>
           </div>
         </div>
       </li>
@@ -96,21 +100,21 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item {% if request.resolver_match.url_name == "pages" %}active{% endif %}">
+      <li class="nav-item {% if request.resolver_match.url_name == "pages" %}active{% endif %} ">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>Pages</span>
         </a>
-        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Login Screens:</h6>
             <a class="collapse-item" href="{% url 'login' %}">Login</a>
-            <a class="collapse-item" href="#">Register</a>
+            <a class="collapse-item" href="{% url 'register' %}">Register</a>
             <a class="collapse-item" href="#">Forgot Password</a>
             <div class="collapse-divider"></div>
             <h6 class="collapse-header">Other Pages:</h6>
             <a class="collapse-item" href="#">404 Page</a>
-            <a class="collapse-item active" href="#">Blank Page</a>
+            <a class="collapse-item" href="#">Blank Page</a>
           </div>
         </div>
       </li>
@@ -382,11 +386,6 @@
       </div>
     </div>
   </div>
-
-  <!-- Bootstrap core JavaScript-->
-  <script src="{% static 'dashboard/vendor/jquery/jquery.min.js' %}"></script>
-  <script src="{% static 'dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
   <!-- Core plugin JavaScript-->
   <script src="{% static 'dashboard/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
 
@@ -400,15 +399,16 @@
   <script src="{% static 'dashboard/js/demo/chart-area-demo.js' %}"></script>
   <script src="{% static 'dashboard/js/demo/chart-pie-demo.js' %}"></script>
   
-<!-- Bootstrap core JavaScript-->
-<script src="{% static 'dashboard/vendor/jquery/jquery.min.js' %}"></script>
-<script src="{% static 'dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript-->
+  <script src="{% static 'dashboard/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'dashboard/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="{% static 'dashboard/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+  <!-- Page level plugins -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="{% static 'dashboard/js/sb-admin-2.min.js' %}"></script>
+  <!-- Page level custom scripts -->
+  <script src="js/demo/datatables-demo.js"></script>
 
 </body>
 
