@@ -7,13 +7,13 @@ from django.contrib import messages
 
 def inventorylist(request):
     context = {"items": Item.objects.all()}
-    return render(request,'inventory/inventory.html', context)
+    return render(request, 'inventory/inventory.html', context)
 
 def create(request):
     context = {}
     if request.user.is_staff:
         if request.method == 'POST':
-            form = ItemCreateForm(request.POST)
+            form = ItemCreateForm(request.POST, request.FILES)
             if form.is_valid():
                 form.save()
                 title = form.cleaned_data.get('title')
