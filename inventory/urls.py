@@ -8,4 +8,5 @@ from . import views
 urlpatterns = [
     path('', views.inventorylist, name='inventory'),
     path('create/', views.create, name='create-item'),
+    path("item/<int:pk>", views.update, name="post-update")
 ]
