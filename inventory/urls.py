@@ -10,3 +10,4 @@ urlpatterns = [
     path('create/', views.create, name='create-item'),
     path("item/<int:pk>", views.update, name="post-update")
 ]
+
