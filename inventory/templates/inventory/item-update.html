@@ -9,7 +9,7 @@
                                         {% csrf_token %}
                                         {% load widget_tweaks %}
                                         <div class="form-group">
-                                            <label for="{{ u_form.title.id_for_label }}">{{ u_form }}</label>
+                                            <label for="{{ u_form.title.id_for_label }}">{{ u_form.title.label }}</label>
                                             {{ u_form.title|add_class:'form-control' }}
                                             {% for error in u_form.title.errors %}
                                             <span class="help-block">{{ error }}</span>
