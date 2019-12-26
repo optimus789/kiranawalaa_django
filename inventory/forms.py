@@ -1,9 +1,9 @@
 from django import forms
 from .models import Item
 
-TAX= [
+TAX = [
     ('0.0', 'No tax'),
-    ('8.0', "7 % gst"),
+    ('8.0', "8 % gst"),
     ('12.0', '12 % gst'),
     ('18.0', '18 % gst'),
     ]
@@ -36,7 +36,7 @@ class ItemCreateForm(forms.ModelForm):
     """cprice = forms.FloatField(label="Cost Price", required=True)
     sprice = forms.FloatField(label="Selling Price", required=True)
     mrp = forms.FloatField(label="Maximum Retail Price(MRP): ", required=True)"""
-    tax = forms.FloatField(label='Tax', widget=forms.RadioSelect(choices=TAX), required=False)
+    tax = forms.ChoiceField(label='Tax', widget=forms.RadioSelect(choices=TAX), required=False)
     """stock = forms.IntegerField(label="Stock", required=True)"""
     units = forms.ChoiceField(label="Unit", required=True, choices=UNITS)
 

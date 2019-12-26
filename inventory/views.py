@@ -31,16 +31,32 @@ def create(request):
 
 
 def update(request, pk):
-    instance = get_object_or_404(Item, id=pk)
-    u_form = ItemUpdateForm(request.POST, request.FILES)
+    """if request.method == 'POST':
+        title = request.POST.get("title")
+        desc = request.POST.get("desc")           
+        category = request.POST.get("category")           
+        mail = request.POST.get("mail")
+        Item.objects.filter(id=pk).update(name="Downtown (Madison)")"""
+    instance1 = get_object_or_404(Item, id=pk)
+    u_form = ItemUpdateForm(request.POST, request.FILES, instance=instance1)
     if u_form.is_valid():
-        u_form.save()
         title = u_form.cleaned_data.get('title')
+        """desc = u_form.cleaned_data.get('desc')
+        category = u_form.cleaned_data.get('category')
+        cprice = u_form.cleaned_data.get('cprice')
+        sprice = u_form.cleaned_data.get('sprice')
+        mrp = u_form.cleaned_data.get('mrp')
+        tax = u_form.cleaned_data.get('tax')
+        units = u_form.cleaned_data.get('units')
+        image = u_form.cleaned_data.get('image')
+        stock = u_form.cleaned_data.get('stock')"""
+        u_form.save()
         messages.success(request, f'Item {title} has been updated successfully')
         return redirect('inventory')
 
     context = {
-    'u_form': u_form
+    'u_form': u_form,
+    'item':instance1
     }
 
     return render(request, 'inventory/item-update.html', context)

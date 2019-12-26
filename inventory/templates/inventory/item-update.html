@@ -1,27 +1,29 @@
 {% extends "dashboard/blank.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h1>Add the item !</h1>
-
-<div class="content-section">
-        <div class="container center-block">
-            <div class="content-section">
-                <form method="POST" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    {% load widget_tweaks %}
-                    <div class="form-group">
-                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                        {{ u_form.title|add_class:'form-group' }}
-                        {% for error in field.errors %}
-                        <span class="help-block">{{ error }}</span>
-                        {% endfor %}
+<h1>Update item !</h1>
+<div class="container center-block">
+         <div class="content-section">
+                            
+                                <form method="POST" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        {% load widget_tweaks %}
+                                        <div class="form-group">
+                                            <label for="{{ u_form.title.id_for_label }}">{{ u_form }}</label>
+                                            {{ u_form.title|add_class:'form-control' }}
+                                            {% for error in u_form.title.errors %}
+                                            <span class="help-block">{{ error }}</span>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="form-group">
+                                                <button class="btn btn-outline-info" type="submit">Create</button>
+                                        </div>
+                                    </form>
+                            </form>
+                        </div>
                     </div>
-                    <div class="form-group">
-                            <button class="btn btn-outline-info" type="submit">Create</button>
-                    </div>
-                </form>
+                </div>
             </div>
-        </div>
     </div>
 </div>
 {% endblock content %}
