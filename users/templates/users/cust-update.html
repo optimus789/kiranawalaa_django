@@ -1,0 +1,57 @@
+{% extends "dashboard/blank.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1>Update Customer Details !</h1>
+<div class="container center-block">
+         <div class="content-section">
+                            
+                                <form method="POST" enctype="multipart/form-data" action="">
+                                        {% csrf_token %}
+                                        {% load widget_tweaks %}
+
+                                        <label for="name">Name</label>
+                                    <input type="text" name="name" placeholder="{{cust.name}}" value="" maxlength="50" class="form-group" required id="name">
+                                </div>
+                                
+                                <div class="form-group">Password</label>
+                                    <input type="password" name="password" value="{{cust.password}}" maxlength="30" class="form-group" required id="password">
+                                </div>
+                                
+
+                                <div class="form-group">
+                                    <label for="{{ u_form.image.id_for_label }}">{{ u_form.image.label }}</label>
+                                    {{ u_form  }}
+                                    {% for error in u_form.image.errors %}
+                                        <span class="help-block">{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                                         
+                                <div class="form-group">
+                                    <label for="address_line1">Address: </label>
+                                    <input type="text" value="{{cust.address_line1}}" name="address_line1" maxlength="255" class="form-control" required id="address_line1">
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="address_line2">City: </label>
+                                    <input type="text" value="{{cust.address_line2}}" name="address_line2" maxlength="20" class="form-control" required id="address_line2">
+                                </div>    
+
+                                <div class="form-group">
+                                    <label for="phone">Phone: </label>
+                                    <input type="number" value="{{cust.phone}}" name="phone" maxlength="10" class="form-group" required id="phone">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="zip_code">Stock</label>
+                                    <input type="number" value="{{cust.zip_code}}" name="zip_code" maxlength="6" class="form-group" required id="zip_code">
+                                </div>
+
+                                <button class="btn btn-success" type="submit">Update</button>
+                                </form>  
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+{% endblock content %}
