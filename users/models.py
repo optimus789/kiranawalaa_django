@@ -4,15 +4,16 @@ from PIL import Image
 
 # Create your models here.
 
+
 class Customer(models.Model):
     name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100, unique=True)
-    password = models.CharField(max_length=100)
-    image = models.ImageField(default="default_cust.jpg", upload_to='cust_pics')
-    address_line1 = models.CharField(max_length=100)
-    address_line2 = models.CharField(max_length=100)
-    phone = models.CharField(max_length=100)
-    zip_code = models.CharField(max_length=20)
+    email = models.EmailField(max_length=50, unique=True)
+    password = models.CharField(max_length=20)
+    image = models.ImageField(default="default_cust.jpg", upload_to="cust_pics")
+    address_line1 = models.CharField(max_length=255)
+    address_line2 = models.CharField(max_length=20)
+    phone = models.PositiveIntegerField(max_length=10)
+    zip_code = models.CharField(max_length=6)
 
     def __str__(self):
         return self.name
@@ -28,17 +29,18 @@ class Customer(models.Model):
             img.save(self.image.path)
 
 
-
 class Deliveryguy(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=100, unique=True)
     password = models.CharField(max_length=100)
-    image = models.ImageField(default="default_dlvr.jpg", upload_to='delvrygy_pics')
+    image = models.ImageField(default="default_dlvr.jpg", upload_to="delvrygy_pics")
     address_line1 = models.CharField(max_length=100)
     address_line2 = models.CharField(max_length=100)
     phone = models.CharField(max_length=100)
     zip_code = models.CharField(max_length=20)
-    drvlicence = models.ImageField(default="licence.jpg", upload_to='delvrygy_pics/docs')
+    drvlicence = models.ImageField(
+        default="licence.jpg", upload_to="delvrygy_pics/docs"
+    )
     docname = models.CharField(max_length=50)
     verfdoc = models.ImageField(default="doc.jpg", upload_to="dlvrygy_pics/docs")
 

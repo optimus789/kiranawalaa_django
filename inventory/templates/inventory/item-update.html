@@ -5,21 +5,115 @@
 <div class="container center-block">
          <div class="content-section">
                             
-                                <form method="POST" enctype="multipart/form-data">
+                                <form method="POST" enctype="multipart/form-data" action="">
                                         {% csrf_token %}
                                         {% load widget_tweaks %}
+
+                                        <label for="title">Title</label>
+                                    <input type="text" name="title" placeholder="{{item.title}}" value="" maxlength="100" class="form-group" required id="title">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="desc">Desc</label>
+                                    <input type="text" name="desc" value="{{item.desc}}" maxlength="1000" class="form-group" required id="desc">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="category_0">Select type: </label>
+                                    <ul id="category" class="form-group">
+                <li><label for="category_0"><input {% if item.category == "fruit" %}checked{% endif %} type="radio" name="category" value="fruit" class="form-group" required id="category_0">
+            Fruit</label>
+
+            </li>
+                <li><label for="category_1"><input {% if item.category == "beverage" %}checked{% endif %} type="radio" name="category" value="beverage" class="form-group" required id="category_1">
+            Beverage</label>
+
+            </li>
+                <li><label for="category_2"><input {% if item.category == "biscuit" %}checked{% endif %} type="radio" name="category" value="biscuit" class="form-group" required id="category_2">
+            Biscuits</label>
+
+            </li>
+                <li><label for="category_3"><input {% if item.category == "grains" %}checked{% endif %} type="radio" name="category" value="grains" class="form-group" required id="category_3">
+            Grains</label>
+
+            </li>
+                <li><label for="category_4"><input {% if item.category == "vegetables" %}checked{% endif %} type="radio" name="category" value="vegetables" class="form-group" required id="category_4">
+            Vegetables</label>
+
+            </li>
+            </ul>
+                                </div>
+                                
+                               
                                         <div class="form-group">
-                                            <label for="{{ u_form.title.id_for_label }}">{{ u_form.title.label }}</label>
-                                            {{ u_form.title|add_class:'form-control' }}
-                                            {% for error in u_form.title.errors %}
+                                            <label for="{{ u_form.image.id_for_label }}">{{ u_form.image.label }}</label>
+                                            {{ u_form  }}
+                                            {% for error in u_form.image.errors %}
                                             <span class="help-block">{{ error }}</span>
                                             {% endfor %}
                                         </div>
-                                        <div class="form-group">
-                                                <button class="btn btn-outline-info" type="submit">Create</button>
-                                        </div>
+                                         
+                                <div class="form-group">
+                                    <label for="cprice">Cost Price</label>
+                                    <input type="number" value="{{item.cprice}}" name="cprice" step="any" class="form-group" required id="cprice">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="sprice">Selling Price</label>
+                                    <input type="number" value="{{item.sprice}}" name="sprice" step="any" class="form-group" required id="sprice">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="mrp">Maximum Retail Price (MRP) </label>
+                                    <input type="number" value="{{item.mrp}}" name="mrp" step="any" class="form-group" required id="mrp">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="tax_0">Tax</label>
+                                    <ul id="tax" class="form-group">
+                                        <li><label for="tax_0"><input {% if item.tax == 0 %}checked{% endif %} type="radio" name="tax" value="0.0" class="form-group" id="tax_0">
+                                    No tax</label>
+
+                                        </li>
+                                            <li><label for="tax_1"><input {% if item.tax == 8 %}checked{% endif %} type="radio" name="tax" value="8.0" class="form-group" id="tax_1">
+                                        8 % gst</label>
+
+                                        </li>
+                                            <li><label for="tax_2"><input {% if item.tax == 12 %}checked{% endif %} type="radio" name="tax" value="12.0" class="form-group" id="tax_2">
+                                        12 % gst</label>
+
+                                        </li>
+                                            <li><label for="tax_3"><input {% if item.tax == 18 %}checked{% endif %} type="radio" name="tax" value="18.0" class="form-group" id="tax_3">
+                                        18 % gst</label>
+
+                                        </li>
+                                    </ul>
+                                    
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="stock">Stock</label>
+                                    <input type="number" value="{{item.stock}}" name="stock" min="0" class="form-group" required id="stock">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="units">Unit</label>
+                                    <select name="units" class="form-group" id="units">
+                                    <option {% if item.units == "kg" %}selected{% endif %} value="kg">KiloGram(KG)</option>
+
+                                    <option {% if item.units == "lt" %}selected{% endif %} value="lt">Litre(LT)</option>
+
+                                    <option {% if item.units == "gm" %}selected{% endif %} value="gm">Gram(gm)</option>
+
+                                    <option {% if item.units == "ml" %}selected{% endif %} value="ml">MiliLitre(ml)</option>
+
+                                    <option {% if item.units == "Nos" %}selected{% endif %} value="Nos">Number of pieces</option>
+
+                                    </select>
+
+                                    <button class="btn btn-success" type="submit">Update</button>
                                     </form>
-                            </form>
+                             
                         </div>
                     </div>
                 </div>

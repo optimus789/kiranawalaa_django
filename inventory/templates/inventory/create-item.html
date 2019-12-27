@@ -1,25 +1,110 @@
 {% extends "dashboard/blank.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h1>Add the item !</h1>
+
 
 <div class="content-section">
         <div class="container center-block">
-            <div class="content-section">
+            <div class="content-section card container m-2 shadow p-5">
+                <h1>Add New Item</h1>
                 <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
                     {% load widget_tweaks %}
-                    {% for field in form.visible_fields %}
-                    <div class="form-group">
-                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                        {{ field|add_class:'form-group' }}
-                        {% for error in field.errors %}
-                        <span class="help-block">{{ error }}</span>
-                        {% endfor %}
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-12">
+                            <label for="{{ form.title.id_for_label }}">{{ form.title.label }}</label>
+                            {{ form.title|add_class:'form-group form-control' }}
+                            {% for error in form.title.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="form-group col-md-4 col-sm-12" >
+                            <label for="{{ form.category.id_for_label }}">{{ form.category.label }}</label>
+                            {{ form.category|add_class:'form-group form-control ' }}
+                            {% for error in form.category.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        
+                        <div class="form-group col-md-4 col-sm-12">
+                            <label for="{{ form.tax.id_for_label }}">{{ form.tax.label }}</label>
+                            {{ form.tax|add_class:'form-group form-control ' }}
+                            {% for error in form.tax.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
                     </div>
-                    {% endfor %}
+
+                    <div class="row">
+                        <div class="form-group  col-md-6 col-sm-6">
+                            <label for="{{ form.desc.id_for_label }}">{{ form.desc.label }}</label>
+                            {{ form.desc|add_class:'form-group form-control textarea' }}
+                            {% for error in form.desc.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  col-md-4 col-sm-12">
+                            <label for="{{ form.cprice.id_for_label }}">Cost Price</label>
+                            {{ form.cprice|add_class:'form-group form-control' }}
+                            {% for error in form.cprice.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        
+                        <div class="form-group  col-md-4 col-sm-12">
+                            <label for="{{ form.mrp.id_for_label }}">Max.Retail Price(MRP)</label>
+                            {{ form.mrp|add_class:'form-group form-control' }}
+                            {% for error in form.mrp.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="form-group  col-md-4 col-sm-12">
+                            <label for="{{ form.sprice.id_for_label }}">Selling Price</label>
+                            {{ form.sprice|add_class:'form-group form-control' }}
+                            {% for error in form.sprice.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-3 col-sm-6">
+                            <label for="{{ form.stock.id_for_label }}">{{ form.stock.label }}</label>
+                            {{ form.stock|add_class:'form-group form-control' }}
+                            {% for error in form.stock.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="form-group col-md-3 col-sm-6">
+                            <label for="{{ form.units.id_for_label }}">{{ form.units.label }}</label>
+                            {{ form.units|add_class:' form-group form-control' }}
+                            {% for error in form.units.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-3 col-sm-6">
+                            <label for="{{ form.image.id_for_label }}">{{ form.image.label }}</label>
+                            {{ form.image|add_class:' form-group form-control' }}
+                            {% for error in form.image.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
                     <div class="form-group">
-                            <button class="btn btn-outline-info" type="submit">Create</button>
+                            <button class="btn btn-success" type="submit">Add Item</button>
                     </div>
                 </form>
             </div>

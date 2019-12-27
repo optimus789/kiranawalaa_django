@@ -12,7 +12,7 @@
                     <span class="icon text-white-50">
                       <i class="fas fa-plus"></i>
                     </span>
-                    <span class="text">Add Item</span>
+                    <span class="text">Add Delivery Person</span>
                   </a></h6>
                             
                             </div>
@@ -27,6 +27,9 @@
                                     <th>Email</th>
                                     <th>Address</th>
                                     <th>Phone</th>
+                                    <th>Licence</th>
+                                    <th>Docname</th>
+                                    <th>DocFile</th>
                                     <th class="text-right" >Actions</th>
                                     </tr>
                                 </thead>
@@ -37,18 +40,24 @@
                                     <th>Email</th>
                                     <th>Address</th>
                                     <th>Phone</th>
+                                    <th>Licence</th>
+                                    <th>Docname</th>
+                                    <th>DocFile</th>
                                     <th class="text-right" >Actions</th>
                                     </tr>
                                 </tfoot>
                                 <tbody>
-                                {% for cust in custs %}
+                                {% for del in dels %}
                                     <tr>
-                                    <td class="text-left">{{ cust.name }}</td>
-                                    <td><img style="width:128px;" src="{{cust.image.url}}"></td>
-                                    <td>{{ cust.email }}</td>
-                                    <td>{{ cust.address_line1 }}&nbsp;{{cust.address_line2}} - {{cust.zip_code}}</td>
-                                    <td>{{ cust.phone }}</td>
-                                    <td class="text-right"><i class="fas fa-edit mx-2 text-info"></i>&nbsp;<a href="{% url 'cust-delete' cust.id %}"><i class="fas mx-2 fa-trash-alt text-danger"></i></a></td>
+                                    <td class="text-left">{{ del.name }}</td>
+                                    <td><img style="width:128px;" src="{{del.image.url}}"></td>
+                                    <td>{{ del.email }}</td>
+                                    <td>{{ del.address_line1 }}&nbsp;{{del.address_line2}}</td>
+                                    <td>{{ del.phone }}</td>
+                                    <td><img style="width:128px;" src="{{del.drvlicence.url}}"></td>
+                                    <td>{{ del.docname }}</td>
+                                    <td><img style="width:128px;" src="{{del.verfdoc.url}}"></td>
+                                    <td class="text-right"><i class="fas fa-edit mx-2 text-info"></i>&nbsp;<i class="fas mx-2 fa-trash-alt text-danger"></i></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

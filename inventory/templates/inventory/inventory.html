@@ -22,6 +22,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
+                                    <th>ID</th>
                                     <th class="text-left" >Name</th>
                                     <th>Image</th>
                                     <th>Description</th>
@@ -36,6 +37,7 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
+                                    <th>ID</th>
                                     <th class="text-left" >Name</th>
                                     <th>Image</th>
                                     <th>Description</th>
@@ -51,6 +53,7 @@
                                 <tbody>
                                 {% for item in items %}
                                     <tr>
+                                    <td class="text-left">{{ item.id }}</td>
                                     <td class="text-left">{{ item.title }}</td>
                                     <td><img style="width:128px;" src="{{item.image.url}}"></td>
                                     <td>{{ item.desc }}</td>
@@ -60,7 +63,7 @@
                                     <td>{{ item.mrp }}</td>
                                     <td>{{ item.tax }}</td>
                                     <td>{{ item.stock }}&nbsp;{{ item.units }}</td>
-                                    <td class="text-right"><i class="fas fa-edit mx-2 text-info"></i>&nbsp;<i class="fas mx-2 fa-trash-alt text-danger"></i></td>
+                                    <td class="text-right"><a href="{% url 'post-update' item.id %}"><i class="fas fa-edit mx-2 text-info"></i></a>&nbsp;<a href="{% url 'post-delete' item.id %}"><i class="fas mx-2 fa-trash-alt text-danger"></i></a></td>
                                     </tr>
                                 {% endfor %}
                                 </tbody>

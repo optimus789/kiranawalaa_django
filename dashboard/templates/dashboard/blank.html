@@ -67,12 +67,29 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Inventory Options:</h6>
-            <a class="collapse-item" href="#">Add</a>
-            <a class="collapse-item" href="#">Update</a>
-            <a class="collapse-item" href="#">Delete</a>
+            <a class="collapse-item" href="{% url 'inventory' %}">All Inventory Items</a>
+            <a class="collapse-item" href="{% url 'create-item' %}">Add Items</a>
           </div>
         </div>
       </li>
+
+      
+      <!-- Nav Item - Pages Collapse Menu -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#personales" aria-expanded="true" aria-controls="collapseTwo">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Registered Personales</span>
+        </a>
+        <div id="personales" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Options:</h6>
+            <a class="collapse-item" href="{% url 'cust'%}">Customers</a>
+            <a class="collapse-item" href="{% url 'delv'%}">Delivery Agents</a>
+            
+          </div>
+        </div>
+      </li>
+
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">

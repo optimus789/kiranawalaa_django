@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from .models import Customer, Deliveryguy
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from .forms import UserRegisterForm, CustomerCreateForm, DelvrygyFormCreate
+from .forms import UserRegisterForm, CustomerCreateForm, DelvrygyCreateForm
 
 
 def home(request):
@@ -41,6 +41,15 @@ def custlist(request):
     else:
         messages.warning(request, f'Not an Admin')
         return redirect('/')
+
+
+def delvrylist(request):
+    if request.user.is_staff:
+        context = {"dels": Deliveryguy.objects.all()}
+        return render(request, 'users/delvry.html', context)
+    else:
+        messages.warning(request, f'Not an Admin')
+        return redirect('/')
     
 
 def createcust(request):
@@ -53,7 +62,12 @@ def createcust(request):
                 name = form.cleaned_data.get('name')
                 messages.success(request, f'Customer {name} created successfully!')
                 context['form'] = form
+                return redirect('cust')
+            else:
+                context['form'] = form
+                messages.warning(request, f'Customer {form.errors} creation failed')
                 return render(request=request, template_name='users/create-cust.html', context=context)
+
         else:
             form = CustomerCreateForm()
             context['form'] = form
@@ -62,6 +76,28 @@ def createcust(request):
         messages.warning(request, f'Not an Admin')
         return redirect('/')
 
+def deletecust(request, pk):
+    title1 = Customer.objects.get(id=pk).name
+    Customer.objects.filter(id=pk).delete()
+    messages.success(request, f"Customer {title1} has been delete successfully")
+    return redirect("cust")
 
 
-
+def createdelvry(request):
+    context = {}
+    if request.user.is_staff:
+        if request.method == 'POST':
+            form = DelvrygyCreateForm(request.POST, request.FILES)
+            if form.is_valid():
+                form.save()
+                name = form.cleaned_data.get('name')
+                messages.success(request, f'Delivery Guy {name} created successfully!')
+                context['form'] = form
+                return render(request=request, template_name='users/create-dlvry.html', context=context)
+        else:
+            form = DelvrygyCreateForm()
+            context['form'] = form
+            return render(request=request, template_name='users/create-dlvry.html', context=context)
+    else:
+        messages.warning(request, f'Not an Admin')
+        return redirect('/')

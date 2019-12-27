@@ -1,25 +1,102 @@
 {% extends "dashboard/blank.html" %}
 {% load crispy_forms_tags %}
-{% block content %}
-<h1>Add the item !</h1>
+{% block content %} 
 
 <div class="content-section">
         <div class="container center-block">
-            <div class="content-section">
-                <form method="POST" enctype="multipart/form-data">
+            <div class="content-section card container m-2 shadow p-5">
+                <h1>Add New Customer</h1>
+                <form method="POST" enctype="multipart/form-data"  >
                     {% csrf_token %}
                     {% load widget_tweaks %}
-                    {% for field in form.visible_fields %}
-                    <div class="form-group">
-                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
-                        {{ field|add_class:'form-group' }}
-                        {% for error in field.errors %}
-                        <span class="help-block">{{ error }}</span>
-                        {% endfor %}
+                    <div class="row">
+                        <div class="form-group col-md-4 col-sm-12">
+                            <label for="{{ form.name.id_for_label }}">{{ form.name.label }}</label>
+                            {{ form.name|add_class:'form-group form-control' }}
+                            {% for error in form.name.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        
+                        <div class="form-group col-md-4 col-sm-12" >
+                            <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                            {{ form.email|add_class:'form-group form-control ' }}
+                            {% for error in form.email.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+
+
                     </div>
-                    {% endfor %}
+
+
+                    <div class="row">
+                        
+                        
+                        <div class="form-group  col-md-3 col-sm-6">
+                            <label for="{{ form.phone.id_for_label }}">Mobile Number</label>
+                            {{ form.phone|add_class:'form-group form-control' }}
+                            {% for error in form.phone.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    
+                    
+                        
+                        <div class="form-group col-md-4 col-sm-6">
+                        
+                            <label for="{{ form.password.id_for_label }}">{{ form.password.label }}</label>
+                            {{ form.password|add_class:'form-group form-control ' }}
+                            {% for error in form.password.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group  col-md-6 col-sm-6">
+                            <label for="{{ form.address_line1.id_for_label }}">{{ form.address_line1.label }}</label>
+                            {{ form.address_line1|add_class:'form-group form-control textarea' }}
+                            {% for error in form.address_line1.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+                    <div class="row">
+
+                        
+                        <div class="form-group  col-md-4 col-sm-12">
+                            <label for="{{ form.zip_code.id_for_label }}">ZIP/PIN Code</label>
+                            {{ form.zip_code|add_class:'form-group form-control' }}
+                            {% for error in form.zip_code.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <div class="form-group  col-md-4 col-sm-12">
+                            <label for="{{ form.address_line2.id_for_label }}">City</label>
+                            {{ form.address_line2|add_class:'form-group form-control' }}
+                            {% for error in form.address_line2.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+
+
+                    </div>
+ 
+                    <div class="row">
+                        <div class="form-group col-md-3 col-sm-6">
+                            <label for="{{ form.image.id_for_label }}">Profile Picture</label>
+                            {{ form.image|add_class:' form-group form-control' }}
+                            {% for error in form.image.errors %}
+                            <span class="help-block">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+
                     <div class="form-group">
-                            <button class="btn btn-outline-info" type="submit">Create</button>
+                            <button class="btn btn-success" type="submit">Add Item</button>
                     </div>
                 </form>
             </div>
