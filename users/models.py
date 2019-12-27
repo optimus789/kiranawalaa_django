@@ -4,7 +4,6 @@ from PIL import Image
 
 # Create your models here.
 
-
 class Customer(models.Model):
     name = models.CharField(max_length=50)
     email = models.EmailField(max_length=100, unique=True)
@@ -40,6 +39,7 @@ class Deliveryguy(models.Model):
     phone = models.CharField(max_length=100)
     zip_code = models.CharField(max_length=20)
     drvlicence = models.ImageField(default="licence.jpg", upload_to='delvrygy_pics/docs')
+    docname = models.CharField(max_length=50)
     verfdoc = models.ImageField(default="doc.jpg", upload_to="dlvrygy_pics/docs")
 
     def __str__(self):
@@ -66,4 +66,3 @@ class Deliveryguy(models.Model):
             output_size = (300, 300)
             verfdoc.thumbnail(output_size)
             verfdoc.save(self.image.path)
-            

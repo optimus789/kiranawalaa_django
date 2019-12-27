@@ -1,0 +1,62 @@
+{% extends "dashboard/blank.html" %}}
+{% block content %}
+               
+                <div class="content-section shadow center-block">
+                    <!--<img class="rounded-circle article-img" src={post.author.profile.image.url}}>-->
+
+                        <!-- DataTales Example -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                            <div>
+                            <h6 class="m-0 font-weight-bold text-primary">Inventory <a href="{% url 'create-item' %}" class="btn btn-success btn-icon-split float-right">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-plus"></i>
+                    </span>
+                    <span class="text">Add Item</span>
+                  </a></h6>
+                            
+                            </div>
+                            </div>
+                            <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                    <th class="text-left" >Name</th>
+                                    <th>Image</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                    <th class="text-right" >Actions</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                    <th class="text-left" >Name</th>
+                                    <th>Image</th>
+                                    <th>Email</th>
+                                    <th>Address</th>
+                                    <th>Phone</th>
+                                    <th class="text-right" >Actions</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
+                                {% for cust in custs %}
+                                    <tr>
+                                    <td class="text-left">{{ cust.name }}</td>
+                                    <td><img style="width:128px;" src="{{cust.image.url}}"></td>
+                                    <td>{{ cust.email }}</td>
+                                    <td>{{ cust.address_line1 }}&nbsp;{{cust.address_line2}}</td>
+                                    <td>{{ cust.phone }}</td>
+                                    <td class="text-right"><i class="fas fa-edit mx-2 text-info"></i>&nbsp;<i class="fas mx-2 fa-trash-alt text-danger"></i></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                </table>
+                            </div>
+                            </div>
+                        </div>
+
+                </div>
+                
+{% endblock content %}
