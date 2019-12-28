@@ -1,5 +1,5 @@
 {
-    "python.pythonPath": "env/bin/python",
+    "python.pythonPath": "env\\Scripts\\python.exe",
     "files.associations": {
         "**/templates/*.html": "django-html",
         "**/templates/*": "django-txt",
