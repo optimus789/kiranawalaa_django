@@ -1,53 +1,53 @@
 {% extends "dashboard/blank.html" %}
 {% load crispy_forms_tags %}
 {% block content %}
-<h1>Update item !</h1>
 <div class="container center-block">
-         <div class="content-section">
-                            
+         <div class="content-section card container m-2 shadow p-5">
+                <h1>Update Item!</h1>
                                 <form method="POST" enctype="multipart/form-data" action="">
                                         {% csrf_token %}
                                         {% load widget_tweaks %}
 
+                                <div class="form-group" >
                                         <label for="title">Title</label>
-                                    <input type="text" name="title" placeholder="{{item.title}}" value="" maxlength="100" class="form-group" required id="title">
+                                    <input type="text" name="title" value="{{item.title}}" maxlength="100" class="form-group form-control" required id="title">
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="desc">Desc</label>
-                                    <input type="text" name="desc" value="{{item.desc}}" maxlength="1000" class="form-group" required id="desc">
+                                    <input type="text" name="desc" value="{{item.desc}}" maxlength="1000" class="form-group form-control" required id="desc">
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="category_0">Select type: </label>
                                     <ul id="category" class="form-group">
-                <li><label for="category_0"><input {% if item.category == "fruit" %}checked{% endif %} type="radio" name="category" value="fruit" class="form-group" required id="category_0">
-            Fruit</label>
+                                                <li><label for="category_0"><input {% if item.category == "fruit" %}checked{% endif %} type="radio" name="category" value="fruit" class="form-group" required id="category_0">
+                                                  Fruit</label>
 
-            </li>
-                <li><label for="category_1"><input {% if item.category == "beverage" %}checked{% endif %} type="radio" name="category" value="beverage" class="form-group" required id="category_1">
-            Beverage</label>
+                                                </li>
+                                                    <li><label for="category_1"><input {% if item.category == "beverage" %}checked{% endif %} type="radio" name="category" value="beverage" class="form-group" required id="category_1">
+                                                Beverage</label>
 
-            </li>
-                <li><label for="category_2"><input {% if item.category == "biscuit" %}checked{% endif %} type="radio" name="category" value="biscuit" class="form-group" required id="category_2">
-            Biscuits</label>
+                                                </li>
+                                                    <li><label for="category_2"><input {% if item.category == "biscuit" %}checked{% endif %} type="radio" name="category" value="biscuit" class="form-group" required id="category_2">
+                                                Biscuits</label>
 
-            </li>
-                <li><label for="category_3"><input {% if item.category == "grains" %}checked{% endif %} type="radio" name="category" value="grains" class="form-group" required id="category_3">
-            Grains</label>
+                                                </li>
+                                                    <li><label for="category_3"><input {% if item.category == "grains" %}checked{% endif %} type="radio" name="category" value="grains" class="form-group" required id="category_3">
+                                                Grains</label>
 
-            </li>
-                <li><label for="category_4"><input {% if item.category == "vegetables" %}checked{% endif %} type="radio" name="category" value="vegetables" class="form-group" required id="category_4">
-            Vegetables</label>
+                                                </li>
+                                                    <li><label for="category_4"><input {% if item.category == "vegetables" %}checked{% endif %} type="radio" name="category" value="vegetables" class="form-group" required id="category_4">
+                                                Vegetables</label>
 
-            </li>
-            </ul>
-                                </div>
-                                
-                               
+                                                </li>
+                                        </ul>
+                                    </div>
+                                            
                                         <div class="form-group">
+                                        <img src={{ item.image.url }}></img><br>
                                             <label for="{{ u_form.image.id_for_label }}">{{ u_form.image.label }}</label>
-                                            {{ u_form  }}
+                                            {{ u_form.image|add_class:"form-control"  }}
                                             {% for error in u_form.image.errors %}
                                             <span class="help-block">{{ error }}</span>
                                             {% endfor %}
@@ -55,17 +55,17 @@
                                          
                                 <div class="form-group">
                                     <label for="cprice">Cost Price</label>
-                                    <input type="number" value="{{item.cprice}}" name="cprice" step="any" class="form-group" required id="cprice">
+                                    <input type="number" value="{{item.cprice}}" name="cprice" step="any" class="form-group form-control" required id="cprice">
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="sprice">Selling Price</label>
-                                    <input type="number" value="{{item.sprice}}" name="sprice" step="any" class="form-group" required id="sprice">
+                                    <input type="number" value="{{item.sprice}}" name="sprice" step="any" class="form-group form-control" required id="sprice">
                                 </div>
                                 
                                 <div class="form-group">
                                     <label for="mrp">Maximum Retail Price (MRP) </label>
-                                    <input type="number" value="{{item.mrp}}" name="mrp" step="any" class="form-group" required id="mrp">
+                                    <input type="number" value="{{item.mrp}}" name="mrp" step="any" class="form-group form-control" required id="mrp">
                                 </div>
                                 
                                 <div class="form-group">
@@ -93,7 +93,7 @@
                                 
                                 <div class="form-group">
                                     <label for="stock">Stock</label>
-                                    <input type="number" value="{{item.stock}}" name="stock" min="0" class="form-group" required id="stock">
+                                    <input type="number" value="{{item.stock}}" name="stock" min="0" class="form-group form-control" required id="stock">
                                 </div>
                                 
                                 <div class="form-group">
