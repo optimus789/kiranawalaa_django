@@ -64,9 +64,8 @@
 
                     </div>
                     <div class="row">
-
                         
-                        <div class="form-group  col-md-4 col-sm-12">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label for="{{ form.zip_code.id_for_label }}">ZIP/PIN Code</label>
                             {{ form.zip_code|add_class:'form-group form-control' }}
                             {% for error in form.zip_code.errors %}
@@ -74,7 +73,7 @@
                             {% endfor %}
                         </div>
 
-                        <div class="form-group  col-md-4 col-sm-12">
+                        <div class="form-group col-md-4 col-sm-12">
                             <label for="{{ form.address_line2.id_for_label }}">City</label>
                             {{ form.address_line2|add_class:'form-group form-control' }}
                             {% for error in form.address_line2.errors %}

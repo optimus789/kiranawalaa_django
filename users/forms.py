@@ -54,8 +54,12 @@ class DelvrygyCreateForm(forms.ModelForm):
     docname = forms.ChoiceField(
         label="Select the doctype and update its corresponding Photo: ",
         choices=DOCTYPE,
-        widget=forms.RadioSelect(),
         required=True
+    )
+    address_line1 = forms.CharField(
+        widget=forms.Textarea(attrs={"rows": 3, "cols": 20}),
+        max_length=255,
+        required=True,
     )
 
     class Meta:
