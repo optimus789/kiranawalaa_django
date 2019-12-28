@@ -75,8 +75,8 @@
                 <div class="card-body">
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
-                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Orders</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{count}}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -87,6 +87,172 @@
         </div>
     </div>
 
+    <div class="row">
+    
+        <div class="col-md-12 ">
+            <div class="card border-left-danger shadow h-100 py-2">
+
+                <div class="card-header py-3">
+                            <div>
+                            <h6 class="m-0 font-weight-bold text-primary">Order Requests</h6>
+                            
+                            </div>
+                            </div>
+                            <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                    <th class="text-left">ID</th>
+                                    <th class="text-center" >Customer Name</th>
+                                    <th class="text-center">Contact</th>
+                                    <th class="text-center">Order Amount</th>
+                                    <th class="text-center">Location</th>
+                                    <th class="text-center">Received On</th>
+                                    <th class="text-center">D.Agent</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-right" >Actions</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                    <th class="text-left">ID</th>
+                                    <th class="text-center" >Customer Name</th>
+                                    <th class="text-center" >Contact</th>
+                                    <th class="text-center">Order Amount</th>
+                                    <th class="text-center">Location</th>
+                                    <th class="text-center">Received On</th>
+                                    <th class="text-center">D.Agent</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-right" >Actions</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>                                        
+                                {% for order in orders %}
+                                    <tr>
+                                    <td class="text-left">{{ order.id }}</td>
+                                    <td class="text-center">
+                                        {% for cust in custs  %}
+                                            {% if order.custId == cust.id %}
+                                                {{cust.name}}
+                                            {% endif %}
+                                            
+                                        {% endfor %}
+                                    </td>
+                                    <td class="text-center">{{ order.contact }}</td>
+                                    <td class="text-center">{{ order.amount }}</td>
+                                    <td class="text-center">{{ order.Address }}</td>
+                                    <td class="text-center">{{ order.created_at }}</td>
+                                    <td class="text-center">
+                                        {% for dagent in custs  %}
+                                            {% if order.custId == cust.id %}
+                                                {{cust.name}}
+                                            {% endif %}
+                                            
+                                        {% endfor %}
+                                    </td>
+                                    <td class="text-center">{{ order.status }}</td>
+                                    <td class="text-right"><a href="{% url 'post-update' order.id %}"><i class="fas fa-edit mx-2 text-info"></i></a>&nbsp;<a href="{% url 'post-delete' order.id %}"><i class="fas mx-2 fa-trash-alt text-danger"></i></a></td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                </table>
+                            </div>
+                            </div>
+
+            </div>
+        </div>
+    
+    </div>
+
+
+<br>
+
+
+
+
+    <div class="row">
+    
+        <div class="col-md-12 ">
+            <div class="card border-left-success shadow h-100 py-2">
+
+                <div class="card-header py-3">
+                            <div>
+                            <h6 class="m-0 font-weight-bold text-primary">Completed Orders </h6>
+                            
+                            </div>
+                            </div>
+                            <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                 <thead>
+                                    <tr>
+                                    <th class="text-left">ID</th>
+                                    <th class="text-center" >Customer Name</th>
+                                    <th class="text-center" >Contact</th>
+                                    <th class="text-center">Order Amount</th>
+                                    <th class="text-center">Location</th>
+                                    <th class="text-center">Received On</th>
+                                    <th class="text-center">D.Agent</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-right" >Actions</th>
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                    <th class="text-left">ID</th>
+                                    <th class="text-center" >Customer Name</th>
+                                    <th class="text-center" >Contact</th>
+                                    <th class="text-center">Order Amount</th>
+                                    <th class="text-center">Location</th>
+                                    <th class="text-center">Received On</th>
+                                    <th class="text-center">D.Agent</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-right" >Actions</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>                                        
+                                {% for order in orders %}
+                                    {% if order.status == "Completed" %}
+                                        <tr>
+                                        <td class="text-left">{{ order.id }}</td>
+                                        <td class="text-center">
+                                            {% for cust in custs  %}
+                                                {% if order.custId == cust.id %}
+                                                    {{cust.name}}
+                                                {% endif %}
+                                                
+                                            {% endfor %}
+                                        </td>
+                                        <td class="text-center">{{ order.contact }}</td>
+                                        <td class="text-center">{{ order.amount }}</td>
+                                        <td class="text-center">{{ order.Address }}</td>
+                                        <td class="text-center">{{ order.created_at }}</td>
+                                        <td class="text-center">
+                                            {% for dagent in custs  %}
+                                                {% if order.custId == cust.id %}
+                                                    {{cust.name}}
+                                                {% endif %}
+                                                
+                                            {% endfor %}
+                                        </td>
+                                        <td class="text-center">{{ order.status }}</td>
+                                        <td class="text-right"><a href="{% url 'post-update' order.id %}"><i class="fas fa-edit mx-2 text-info"></i></a>&nbsp;<a href="{% url 'post-delete' order.id %}"><i class="fas mx-2 fa-trash-alt text-danger"></i></a></td>
+                                        </tr>
+                                    {% endif %}
+                                {% endfor %}
+                                </tbody>
+                                </table>
+                            </div>
+                            </div>
+
+            </div>
+        </div>
+    
+    </div>
+
+
+<br>
     <!-- Content Row -->
 
     <div class="row">

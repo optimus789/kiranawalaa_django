@@ -1,31 +1,8 @@
 from django.db import models
 from django.utils import timezone
 from PIL import Image
-
-# Create your models here.
-"""TAX= (
-    ('0.0', 'No tax'),
-    ('8.0', "7 % gst"),
-    ('12.0', '12 % gst'),
-    ('18.0', '18 % gst')
-    )
-
-CAT = (
-    ('fruit', 'Fruit'),
-    ('beverage', "Beverage"),
-    ('biscuit', 'Biscuits'),
-    ('grains', 'Grains'),
-    ('vegetables', 'Vegetables')
-)
-
-UNITS = (
-    ('kg', 'KiloGram(KG)'),
-    ('lt', "Litre(LT)"),
-    ('gm', 'Gram(gm)'),
-    ('ml', 'MiliLitre(ml)'),
-    ('Nos', 'Number of pieces')
-)"""
-
+from django.core.validators import int_list_validator
+ 
 
 class Item(models.Model):
     title = models.CharField(max_length=100)
@@ -54,3 +31,21 @@ class Item(models.Model):
             img.thumbnail(output_size)
             img.save(self.image.path)
             
+
+
+class Orders(models.Model):
+    custId = models.IntegerField(max_length=10)
+    contact = models.IntegerField(max_length=10)
+    amount = models.FloatField(max_length=10)
+    productsId = models.CharField(validators=[int_list_validator], max_length=100)
+    Address = models.CharField(max_length=200)
+    dagent = models.IntegerField(max_length=10)
+    status = models.CharField(max_length=10)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    
+    def __str__(self):
+        return self.custId
+ 
+
+
