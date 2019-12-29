@@ -34,7 +34,7 @@ class Item(models.Model):
 
 
 class Orders(models.Model):
-    custId = models.IntegerField(max_length=10)
+    custId = models.CharField(max_length=10)
     contact = models.IntegerField(max_length=10)
     amount = models.FloatField(max_length=10)
     productsId = models.CharField(validators=[int_list_validator], max_length=100)

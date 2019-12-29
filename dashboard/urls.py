@@ -2,6 +2,8 @@ from django.contrib import auth
 from django.urls import path, include
 from django.contrib.auth import views as auth_views
 from users import views as user_views
+from django.conf.urls import url
+from .views import ChartData
 from . import views
 
 urlpatterns = [
@@ -15,5 +17,6 @@ urlpatterns = [
     path("dashboard/delv/update/<int:pk>", user_views.delvryupdate, name="delv-update"),
     path('dashboard/delv/create/', user_views.createdelvry, name='delv-create'),
     path('dashboard/delv/delete/<int:pk>', user_views.deletedelv, name='delv-delete'),
-    path('dashboard/delv/', user_views.delvrylist, name='delv')
+    path('dashboard/delv/', user_views.delvrylist, name='delv'),
+    url(r"^api/chart/data/$",ChartData.as_view()),
 ]
